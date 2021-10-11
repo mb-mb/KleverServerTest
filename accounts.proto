@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+service AccountService {
+    rpc List(Empty) returns (AccountList) {}
+    rpc Get (AccountRequestId) returns (Account) {}
+    rpc Insert (Account) returns (Account) {}
+    rpc Update (Account) returns (Account) {}
+    rpc Delete (AccountRequestId) returns (Empty) {}
+}
+message Empty {}
+
+message Account {
+    string id = 1;
+    string lastOperation = 2;
+    string amount = 3;
+}
+
+message AccountList {
+    repeated Account accounts = 1;
+}
+
+message AccountRequestId {
+    string id = 1;
+}
